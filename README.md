@@ -2,7 +2,7 @@
 
 Multi-turn **tool-using meeting scheduler** for RLVR / evals on the [Prime Intellect Environments Hub](https://app.primeintellect.ai/dashboard/environments).
 
-Source: [github.com/devtechedge/meeting-slot](https://github.com/devtechedge/meeting-slot)
+Hub: [devtechedge/meeting-slot](https://app.primeintellect.ai/dashboard/environments/devtechedge/meeting-slot) · Source: [github.com/devtechedge/meeting-slot](https://github.com/devtechedge/meeting-slot)
 
 A sequel to [calendar-math](https://github.com/devtechedge/calendar-math): same calendar domain, but the model has to **query tools** instead of reading the calendar out of the prompt.
 
@@ -73,7 +73,7 @@ uv pip install -e .
 python -m pytest tests/test_meeting_slot.py -q
 ```
 
-From the Hub (after push):
+From the Hub:
 
 ```bash
 prime env install devtechedge/meeting-slot
