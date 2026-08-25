@@ -1,0 +1,34 @@
+[project]
+name = "meeting-slot"
+version = "0.1.1"
+description = "Multi-turn tool-using meeting scheduler: find the earliest UTC start across hidden calendars, timezones, and working hours."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "devtechedge" }]
+keywords = [
+    "rl",
+    "rlvr",
+    "calendar",
+    "timezone",
+    "scheduling",
+    "verifiable",
+    "multi-turn",
+    "tool-use",
+    "datetime",
+]
+dependencies = [
+    "verifiers>=0.1.14,<0.2",
+    "datasets",
+    "tzdata",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+include = ["meeting_slot.py"]
