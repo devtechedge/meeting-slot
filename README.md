@@ -8,7 +8,7 @@ A sequel to [calendar-math](https://github.com/devtechedge/calendar-math): same 
 
 The task is to find the **earliest valid UTC start** that works for every attendee. Busy intervals, working hours, and timezones are hidden. The final answer goes in `<answer>` tags as a UTC ISO-8601 timestamp, e.g. `2024-03-11T15:00:00Z`. If no slot exists, `NONE`.
 
-The grader is a UTC sweep-line over `zoneinfo` — no LLM-as-judge, no fuzzy string match on the main reward.
+The grader is a UTC sweep-line over `zoneinfo` - no LLM-as-judge, no fuzzy string match on the main reward.
 
 | Tool | Returns |
 | --- | --- |
@@ -54,9 +54,9 @@ The gold policy is a harness check: tools leak enough to rebuild the world, and 
 
 MiniMax is exact on **12/15**. The three misses are the ones the env is supposed to catch:
 
-- `sydney_ny_none` — format only (0.2). Claimed a 13:00Z overlap between Sydney and New York that does not exist.
-- `dst_eu_monday` — valid-not-earliest (0.3). Answered 10:00Z after the EU spring-forward; gold is 08:00Z.
-- `no_slot_fully_booked` — 0.0. Truncated before `</answer>` at 2048 tokens.
+- `sydney_ny_none` - format only (0.2). Claimed a 13:00Z overlap between Sydney and New York that does not exist.
+- `dst_eu_monday` - valid-not-earliest (0.3). Answered 10:00Z after the EU spring-forward; gold is 08:00Z.
+- `no_slot_fully_booked` - 0.0. Truncated before `</answer>` at 2048 tokens.
 
 ```bash
 uv run vf-eval meeting-slot -n 15 -r 1 -p openrouter \

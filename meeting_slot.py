@@ -1,13 +1,13 @@
 """meeting-slot: multi-turn tool-using meeting scheduler with a deterministic grader.
 
 The model must find the earliest UTC start that fits every attendee. Busy
-intervals, working hours, and timezones are hidden behind tools — stuffing
+intervals, working hours, and timezones are hidden behind tools - stuffing
 the calendar into the prompt would erase the tool-use point.
 
 Final answer is a UTC ISO-8601 start inside ``<answer>`` tags, e.g.
 ``2024-03-11T15:00:00Z``. If no slot exists, ``NONE``.
 
-Gold is interval intersection in UTC via ``zoneinfo`` — the same solver
+Gold is interval intersection in UTC via ``zoneinfo`` - the same solver
 builds the dataset. Reward is exact match plus a small XML-format bonus
 and partial credit for a valid-but-not-earliest start.
 """
@@ -113,10 +113,10 @@ hidden: attendee names, timezones, working hours, and busy calendars. You
 must call tools to inspect them.
 
 Tools:
-- list_attendees() — names
-- get_timezone(name) — IANA timezone
-- get_working_hours(name) — local hours and weekdays (0=Monday … 6=Sunday)
-- get_busy(name, date) — local busy intervals for that attendee's local date (YYYY-MM-DD)
+- list_attendees() - names
+- get_timezone(name) - IANA timezone
+- get_working_hours(name) - local hours and weekdays (0=Monday … 6=Sunday)
+- get_busy(name, date) - local busy intervals for that attendee's local date (YYYY-MM-DD)
 
 Rules:
 - A valid start is the earliest UTC instant such that the whole [start, start+duration)
@@ -920,7 +920,7 @@ def gold_completion(answer: str) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Parser + rubric (stdlib — tests run without verifiers installed)
+# Parser + rubric (stdlib - tests run without verifiers installed)
 # ---------------------------------------------------------------------------
 
 
@@ -1073,7 +1073,7 @@ def _question_for(info: dict[str, Any]) -> str:
         f"{duration}-minute meeting.\n\n"
         f"Search window: {info['window_start']} to {window_end} "
         f"(inclusive calendar dates in UTC). A valid start must fall inside this window.\n\n"
-        "Working hours, timezones, and busy calendars are not in this prompt — "
+        "Working hours, timezones, and busy calendars are not in this prompt - "
         "you must use the tools (list_attendees, get_timezone, get_working_hours, get_busy).\n\n"
         "Intervals are half-open [start, end). Put the earliest valid start in "
         "<answer>YYYY-MM-DDTHH:MM:SSZ</answer>. If no slot exists, answer NONE."
@@ -1355,7 +1355,7 @@ def build_rows(
 
 
 # ---------------------------------------------------------------------------
-# load_environment — Hub / verifiers v0 entrypoint
+# load_environment - Hub / verifiers v0 entrypoint
 # ---------------------------------------------------------------------------
 
 
@@ -1369,7 +1369,7 @@ def load_environment(
 ) -> Any:
     """Build a ``vf.StatefulToolEnv`` for earliest-meeting search.
 
-    Dataset rows never use a top-level ``task`` string — verifiers ≥0.1
+    Dataset rows never use a top-level ``task`` string - verifiers ≥0.1
     treats ``info["task"]`` as a nested rollout payload.
 
     Parameters
